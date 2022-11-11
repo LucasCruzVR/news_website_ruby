@@ -11,6 +11,11 @@ gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+# Use postgresql as the database for Active Record
+gem "pg", "~> 1.1"
+
+# Gem to access AWS
+gem 'aws-sdk-s3', '~> 1.111', '>= 1.111.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -27,7 +32,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'faker', '>= 2.13.0'
+  gem 'rspec-rails', '~> 5.0.2'
+  gem 'shoulda-matchers', '>= 4.3.0'
+  gem 'active_storage_validations'
 end
 
 group :development do
