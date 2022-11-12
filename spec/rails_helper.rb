@@ -3,7 +3,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -61,4 +61,33 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include FactoryBot::Syntax::Methods
+
+  # isso aqui faz com que os before_alls limpem no fim dos testes
+  # config.before(:suite) do
+  #   DatabaseCleaner.clean_with :transaction
+  # end
+
+  # config.before(:each) do
+  #   DatabaseCleaner.strategy = :transaction
+  # end
+
+  # config.before(:all) do
+  #   DatabaseCleaner.start
+  # end
+
+  # config.after(:all) do
+  #   DatabaseCleaner.clean
+  # end
+
+  config.after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

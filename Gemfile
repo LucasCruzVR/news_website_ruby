@@ -39,6 +39,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.2'
   gem 'shoulda-matchers', '>= 4.3.0'
   gem 'active_storage_validations'
+  gem 'database_cleaner-active_record'
+  gem 'airborne'
 end
 
 group :development do

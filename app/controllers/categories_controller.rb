@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show update]
+  before_action :set_category, only: %i[show update destroy]
   def index
     @categories = Category.all
   end
@@ -16,9 +16,19 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    if @category.update(category_params)
+      render :show, status: :ok
+    else
+      render json: @category.errors.messages, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    if @category.destroy
+      head :ok
+    else
+      render json: @category.errors.messages, status: :unprocessable_entity
+    end
   end
 
   def category_params
