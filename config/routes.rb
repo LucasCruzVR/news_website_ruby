@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :categories
+  defaults format: :json do
+    resources :categories, format: :json
+  end
 end
