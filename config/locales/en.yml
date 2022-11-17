@@ -19,6 +19,15 @@ en:
             name:
               taken: "This name has already been taken"
               blank: "The name can't be blank"
+        publication:
+          attributes:
+            title:
+              taken: "This title has already been taken"
+              blank: "The title can't be blank"
+            title_description:
+              taken: "This title_description has already been taken"
+              blank: "The title_description can't be blank"
+
 
     # Translate model names. Used in Model.human_name().
     #models:

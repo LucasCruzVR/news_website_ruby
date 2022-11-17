@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_11_124909) do
+ActiveRecord::Schema.define(version: 2022_11_17_123906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,4 +21,16 @@ ActiveRecord::Schema.define(version: 2022_11_11_124909) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "publications", comment: "Website posts and news", force: :cascade do |t|
+    t.string "title", null: false, comment: "Publication title"
+    t.string "title_description", null: false, comment: "Simple title description text"
+    t.text "content", comment: "Publication content"
+    t.string "image", comment: "Image to reference publication"
+    t.bigint "category_id", comment: "Category ID"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_publications_on_category_id"
+  end
+
+  add_foreign_key "publications", "categories"
 end
