@@ -9,9 +9,12 @@ class PublicationsController < ApplicationController
 
   def create
     @publication = Publication.new(publication_params)
+    AwsRequests::DeleteImageAwsService.call(publication: @publication)
+    @publication.image = AwsRequests::SendImageAwsService.call(publication: @publication, image_file: publication_params[:image_file])
     if @publication.save
       render :show, status: :created
     else
+      AwsRequests::DeleteImageAwsService.call(publication: @publication)
       render json: @publication.errors.messages, status: 422
     end
   end
@@ -37,6 +40,6 @@ class PublicationsController < ApplicationController
   end
 
   def publication_params
-    params.permit(:title, :title_description, :content, :image, :category_id)
+    params.permit(:title, :title_description, :content, :image_file, :category_id)
   end
 end
