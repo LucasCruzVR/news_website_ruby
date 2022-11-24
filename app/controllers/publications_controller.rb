@@ -10,7 +10,10 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.new(publication_params)
     AwsRequests::DeleteImageAwsService.call(publication: @publication)
-    @publication.image = AwsRequests::SendImageAwsService.call(publication: @publication, image_file: publication_params[:image_file])
+    if publication_params[:image_file].present?
+      @publication.image = AwsRequests::SendImageAwsService.call(publication: @publication,
+                                                                 image_file: publication_params[:image_file])
+    end
     if @publication.save
       render :show, status: :created
     else
