@@ -5,6 +5,7 @@ class Publications < ActiveRecord::Migration[6.1]
       t.string :title_description, :null => false, comment: 'Simple title description text'
       t.text :content, comment: 'Publication content'
       t.string :image, comment: 'Image to reference publication'
+      t.boolean :active, default: true
       t.references :category, foreign_key: { to_table: :categories }, comment: 'Category ID'
       t.timestamps
     end
