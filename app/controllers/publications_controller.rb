@@ -2,7 +2,7 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[show update destroy]
 
   def index
-    @publications = Publication.all
+    @publications = Publication.where('publication.status = 1')
   end
 
   def show; end
@@ -36,6 +36,14 @@ class PublicationsController < ApplicationController
     else
       render json: @publication.errors.messages, status: 422
     end
+  end
+
+  def most_viewed
+    @most_viewed = Publication.where("(CURRENT_DATE >= CURRENT_DATE - 7) AND ()")
+  end
+
+  def last_article
+    @last_article = Publication.where("")
   end
 
   def set_publication

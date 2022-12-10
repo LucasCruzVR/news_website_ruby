@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_11_22_131330) do
 
   create_table "categories", comment: "Categories of news", force: :cascade do |t|
     t.string "name", null: false, comment: "Category name"
+    t.integer "status", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_11_22_131330) do
     t.string "title_description", null: false, comment: "Simple title description text"
     t.text "content", comment: "Publication content"
     t.string "image", comment: "Image to reference publication"
+    t.integer "status", default: 1, null: false
     t.bigint "category_id", comment: "Category ID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
