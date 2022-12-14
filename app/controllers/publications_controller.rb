@@ -2,7 +2,7 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[show update destroy]
 
   def index
-    @publications = Publication.where('publication.status = 1')
+    @publications = Publication.where('status = 1')
   end
 
   def show; end
@@ -38,12 +38,18 @@ class PublicationsController < ApplicationController
     end
   end
 
-  def most_viewed
-    @most_viewed = Publication.where("(CURRENT_DATE >= CURRENT_DATE - 7) AND ()")
+  def last_post
+    category_id = Category.find(params[:category])
+    @last_post = Publication.where("select p.id, p.title, p.image, c.name as category 
+                                      from publications as p inner join categories as c 
+                                      on p.category_id = c.id
+                                      where p.category_id = ?", category_id)
+    byebug
   end
 
-  def last_article
-    @last_article = Publication.where("")
+  def most_viewed
+    @most_viewed = Publication.where()
+    byebug
   end
 
   def set_publication
