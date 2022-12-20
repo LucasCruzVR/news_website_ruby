@@ -5,12 +5,12 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   # Callbacks
-  before_validation :strip_name
+  before_validation :format_string
 
   # Associations
   has_many :publications, dependent: :destroy
 
-  def strip_name
-    self.name = name&.strip
+  def format_string
+    self.name = name&.strip.downcase.capitalize()
   end
 end
