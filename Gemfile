@@ -22,7 +22,7 @@ gem 'aws-sdk-s3', '~> 1.111', '>= 1.111.1'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem "image_processing", "~> 1.0"
+gem "image_processing", "~> 1.0" #RUN sudo apt-get install libmagickwand-dev TO USE GEM
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

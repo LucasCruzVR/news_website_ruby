@@ -2,7 +2,7 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: %i[show update destroy]
 
   def index
-    @publications = Publication.where('status = 1')
+    @publications = Publication.where('status = 1').order(created_at: :desc)
   end
 
   def show; end
@@ -39,12 +39,7 @@ class PublicationsController < ApplicationController
   end
 
   def last_post
-    category_id = Category.find(params[:category])
-    @last_post = Publication.where("select p.id, p.title, p.image, c.name as category 
-                                      from publications as p inner join categories as c 
-                                      on p.category_id = c.id
-                                      where p.category_id = ?", category_id)
-    byebug
+    @last_post = Publication.joins(:category).where("categories.name like ?", params[:category]).order(created_at: :desc).first
   end
 
   def most_viewed
