@@ -1,0 +1,1 @@
+json.call(@user, :id, :name, :email, :password_digest)
