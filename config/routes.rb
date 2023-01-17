@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'last_post', on: :collection
     end
     resources :users
-    get 'auth/login', to: 'authentication#login'
+    post 'auth/sign-in', to: 'authentication#login'
+    post 'auth/sign-up', to: 'authentication#sign_up'
   end
 end

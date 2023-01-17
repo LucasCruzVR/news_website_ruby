@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from Aws::Sigv4::Errors::MissingCredentialsError, with: :auth_error_aws
+  before_action :authenticate_user
   include Jwt
 
   def auth_error_aws
