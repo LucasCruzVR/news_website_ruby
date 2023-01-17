@@ -11,6 +11,6 @@ class Category < ApplicationRecord
   has_many :publications, dependent: :destroy
 
   def format_string
-    self.name = name&.strip.downcase.capitalize()
+    self.name = name&.strip&.downcase&.capitalize()
   end
 end

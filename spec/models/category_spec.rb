@@ -15,7 +15,7 @@ RSpec.describe Category, type: :model do
     it 'remove white spaces of name' do
       category = FactoryBot.build(:category, name: '     article   ')
       category.save
-      expect(category.name).to eq('article')
+      expect(category.name).to eq('Article')
     end
   end
 end

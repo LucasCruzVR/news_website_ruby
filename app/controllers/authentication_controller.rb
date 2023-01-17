@@ -9,7 +9,7 @@ class AuthenticationController < ApplicationController
             @token = jwt_encode(user_id: @user.id, exp: @time)
             render :show, status: :ok
         else
-            render json: { error: 'unauthorized' }, status: :unauthorized
+            render json: { error: 'Unauthorized' }, status: :unauthorized
         end
     end
 
