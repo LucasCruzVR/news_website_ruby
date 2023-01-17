@@ -29,10 +29,11 @@ RSpec.describe CategoriesController, type: :request do
         end
       end
     end
-    context 'Not Authenticated' do
-      it 'Return unauthorized' do
-        get '/categories'
-        expect(response).to have_http_status(401)
+    context 'Not authenticated' do
+      it 'Return data anyway' do
+        get '/categories', headers: { 'Authorization': token_permission }
+        expect(response).to have_http_status(200)
+        expect_json([])
       end
     end
   end
