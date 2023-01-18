@@ -15,7 +15,6 @@ class AuthenticationController < ApplicationController
 
     def sign_up
         @user = User.new(auth_params)
-        byebug
         if @user.save
             @time = Time.now + 24.hours.to_i
             @token = jwt_encode(user_id: @user.id, exp: @time)
@@ -27,6 +26,6 @@ class AuthenticationController < ApplicationController
 
     private
     def auth_params
-        params.permit(:name, :email, :biography, :password)
+        params.permit(:name, :email, :biography, :password, :role_id)
     end
 end

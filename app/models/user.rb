@@ -5,5 +5,5 @@ class User < ApplicationRecord
     validates :email, presence: true, length: {maximum: 260}, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: {case_sensitive: false}
     before_save { self.email = email.downcase }
 
-    belongs_to :user, foreign_key: 'role_id'
+    belongs_to :role, foreign_key: 'role_id'
 end
