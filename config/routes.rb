@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       get 'most_viewed', on: :collection
       get 'last_post', on: :collection
     end
-    resources :users
+    resources :users, format: :json
+    resources :roles, format: :json
+    
     post 'auth/sign-in', to: 'authentication#login'
     post 'auth/sign-up', to: 'authentication#sign_up'
   end

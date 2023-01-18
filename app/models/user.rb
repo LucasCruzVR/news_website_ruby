@@ -4,4 +4,6 @@ class User < ApplicationRecord
     validates :password, presence: true, length: {minimum: 6}
     validates :email, presence: true, length: {maximum: 260}, format: {with: URI::MailTo::EMAIL_REGEXP}, uniqueness: {case_sensitive: false}
     before_save { self.email = email.downcase }
+
+    belongs_to :user, foreign_key: 'role_id'
 end

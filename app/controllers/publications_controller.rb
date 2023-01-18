@@ -43,11 +43,7 @@ class PublicationsController < ApplicationController
     @last_post = Publication.joins(:category).where("categories.name like ?", params[:category]).order(created_at: :desc).first
   end
 
-  def most_viewed
-    @most_viewed = Publication.where()
-    byebug
-  end
-
+  private
   def set_publication
     @publication = Publication.find(params[:id])
   end
