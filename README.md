@@ -1,24 +1,11 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# News Website
+## Introduction
+  This is an API to feed an website that shows news about some topics, like Technology, Games, Politics and everything you want to. A journalist can post some news about this topics and can add images for them. Besides that, viewers can filter posts by categories, showing then posts about this selected topic.
+## Model
+![alt text](https://i.imgur.com/4GiI3t2.png)
+## Specification
+- Rails 6.1
+- Ruby 2.7.6
+- AWS S3 for images
+- Postgresql
+- Rspec for Unit Tests
