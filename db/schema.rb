@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 2023_01_17_202112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "password_digest"
-    t.text "biography"
+  create_table "users", comment: "Users Table", force: :cascade do |t|
+    t.string "name", null: false, comment: "Username"
+    t.string "email", null: false, comment: "Email of user"
+    t.string "password_digest", comment: "Password account"
+    t.text "biography", comment: "Text about user"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role_id"
