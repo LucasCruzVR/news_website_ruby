@@ -42,6 +42,9 @@ group :development, :test do
   gem 'active_storage_validations'
   gem 'database_cleaner-active_record'
   gem 'airborne'
+
+  gem 'bundler-audit'
+  gem 'ruby_audit'
 end
 
 group :development do
